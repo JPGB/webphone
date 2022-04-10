@@ -1,7 +1,7 @@
 import Display from '../Display'
 import Dialpad from './../Dialpad/index';
 import CallBtn from './../CallBtn/index';
-import CancelNewCall from '../cancelNewCall';
+import CancelNewCall from '../CancelNewCall';
 
 const Phone = ({ isVisible }) => {
 

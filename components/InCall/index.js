@@ -1,6 +1,6 @@
 import React from 'react'
 import ActiveCall from '../ActiveCall'
-import CallsOnHold from '../callsOnHold'
+import CallsOnHold from '../CallsOnHold'
 import InCallMenu from './../InCallMenu/index';
 
 
