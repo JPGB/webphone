@@ -1,15 +1,17 @@
-import React from 'react'
 import Display from '../Display'
 import Dialpad from './../Dialpad/index';
 import CallBtn from './../CallBtn/index';
+import CancelNewCall from '../cancelNewCall';
 
-const Phone = () => {
+const Phone = ({ isVisible }) => {
+
     return (
-        <div className='flex flex-col items-center justify-center w-full h-full'>
+        <div className={`${isVisible ? 'flex' : 'hidden'} flex-col items-center justify-center w-full h-full`}>
             <div className='flex flex-col items-center justify-around w-5/6 h-5/6'>
+                <CancelNewCall />
                 <Display />
                 <Dialpad />
-                <CallBtn/>
+                <CallBtn />
             </div>
         </div>
     )
