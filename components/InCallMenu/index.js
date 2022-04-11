@@ -11,9 +11,21 @@ const InCallMenu = () => {
         let channelCopy = JSON.parse(JSON.stringify(channelState));
 
         let foundChannelByNumber = channelCopy.find(e => e.active)
+        let thisChannelIndex = channelCopy.findIndex(e => e.active)
 
         foundChannelByNumber.active = false
         foundChannelByNumber.free = true
+
+        let foundNextActiveChannel = false
+
+        for (thisChannelIndex; thisChannelIndex < channelCopy.length; thisChannelIndex++) {
+            if (!channelCopy[thisChannelIndex].free) {
+                channelCopy[thisChannelIndex].active = true
+                foundNextActiveChannel = true;
+            }
+        }
+
+        if (!foundNextActiveChannel && channelCopy.find(e => !e.free)) channelCopy.find(e => !e.free).active = true
 
         setChannelState(channelCopy)
 

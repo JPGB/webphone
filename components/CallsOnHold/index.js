@@ -24,11 +24,24 @@ const CallsOnHold = () => {
     const hangUp = (e) => {
         const [id, number, line] = e.currentTarget.id.split('-');
         let channelCopy = JSON.parse(JSON.stringify(channelState));
+        let thisChannelIndex = channelCopy.findIndex(e => e.active)
 
         let foundChannelByNumber = channelCopy.find(e => e.number == number)
 
         foundChannelByNumber.active = false
         foundChannelByNumber.free = true
+
+        let foundNextActiveChannel = false
+
+        for (thisChannelIndex; thisChannelIndex < channelCopy.length; thisChannelIndex++) {
+            if (!channelCopy[thisChannelIndex].free) {
+                channelCopy[thisChannelIndex].active = true
+                foundNextActiveChannel = true;
+            }
+        }
+
+        if (!foundNextActiveChannel && channelCopy.find(e => !e.free)) channelCopy.find(e => !e.free).active = true
+
 
         setChannelState(channelCopy)
 
