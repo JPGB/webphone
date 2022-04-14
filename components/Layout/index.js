@@ -28,7 +28,7 @@ const Layout = () => {
     }, [channelState])
 
     return (
-        <div className='w-1/3 border border-black border-solid h-3/5'>
+        <div className='border border-black border-solid w-full h-full'>
             <Header />
             <Phone isVisible={componentsVisibility.phone} />
             <InCall isVisible={componentsVisibility.inCall} />
